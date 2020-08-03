@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { RegisterComponent } from './components/register/register.component';
 
@@ -17,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
       {path: '', redirectTo: '/login', pathMatch: 'full'},
       {path: 'login', component: RegisterComponent}
     ]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
