@@ -1,3 +1,7 @@
 .auth-page {
   margin-top: 100px;
 }
+
+input.ng-touched.ng-invalid {
+  border:solid red 1px;
+}
