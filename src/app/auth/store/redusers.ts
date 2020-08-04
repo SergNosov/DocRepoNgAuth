@@ -1,5 +1,5 @@
 import {AuthStateInterface} from '../types/authState.interface';
-import {createReducer, on} from '@ngrx/store';
+import {Action, createReducer, on} from '@ngrx/store';
 import {registerAction} from './actions/register.action';
 
 const initialState: AuthStateInterface = {
@@ -9,7 +9,11 @@ const initialState: AuthStateInterface = {
 const authReduser = createReducer(
   initialState,
   on(registerAction, (state): AuthStateInterface => ({
-    ...state, isSubmitting: true
-  })
+      ...state, isSubmitting: true
+    })
   )
 );
+
+export function redusers(state: AuthStateInterface, action: Action) {
+  return authReduser(state, action);
+}
