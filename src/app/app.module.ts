@@ -1,26 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
-
-import { RegisterComponent } from './components/register/register.component';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AuthModule} from './auth/auth.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RegisterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: '', redirectTo: '/login', pathMatch: 'full'},
-      {path: 'login', component: RegisterComponent}
-    ]),
-    ReactiveFormsModule
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
