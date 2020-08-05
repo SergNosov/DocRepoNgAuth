@@ -1,4 +1,5 @@
 <div class="auth-page">
+  === {{isSubmitting$ | async}} ===
   <div class="conteiner page">
     <div class="row">
       <div class="col-md-4 offset-md-4 col-xs-8 offset-xs-2">
@@ -8,17 +9,22 @@
           <fieldset>
             <fieldset class="form-group">
               <input type="text"
-                     class = "form-control form-control-lg"
+                     class="form-control form-control-lg"
                      placeholder="UserName"
                      formControlName="username"/>
             </fieldset>
             <fieldset class="form-group">
               <input type="password"
-                     class = "form-control form-control-lg"
+                     class="form-control form-control-lg"
                      placeholder="password"
                      formControlName="password"/>
             </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right" type="submit">SugnUp</button>
+            <button class="btn btn-lg btn-primary pull-xs-right"
+                    type="submit"
+                    [disabled]="isSubmitting$ | async"
+            >
+              SugnUp
+            </button>
           </fieldset>
         </form>
       </div>
