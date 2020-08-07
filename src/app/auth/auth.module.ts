@@ -5,6 +5,9 @@ import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {redusers} from './store/redusers';
+import {AuthService} from './services/auth.service';
+import {EffectsModule} from '@ngrx/effects';
+import {RegisterEffect} from './store/effects/register.effect';
 
 const routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -17,8 +20,10 @@ const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    StoreModule.forFeature('auth', redusers)
-  ]
+    StoreModule.forFeature('auth', redusers),
+    EffectsModule.forFeature([RegisterEffect])
+  ],
+  providers: [AuthService]
 })
 export class AuthModule {
 }
