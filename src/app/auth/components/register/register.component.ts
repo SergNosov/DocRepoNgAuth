@@ -36,14 +36,9 @@ export class RegisterComponent implements OnInit {
 
   initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
-    console.log('isSubmiting$', this.isSubmitting$);
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
-    // вариант 1
-    // const request: RegisterRequestInterface = {user: this.form.value};
-
     const request: RegisterRequestInterface = {
       username: this.form.controls.username.value,
       password: this.form.controls.password.value

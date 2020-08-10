@@ -9,20 +9,25 @@ import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class RegisterEffect {
-  register$ = createEffect(() => this.actions$.pipe(
-    ofType(registerAction),
-    switchMap(({request}) => {
-      return this.authService.register(request).pipe(
-        map((currentUser: CurrentUserInterface) => {
-          return registerSuccessAction({currentUser});
-        }),
-        catchError((errResponce: HttpErrorResponse) => {
-          console.log('errResponce: ', errResponce.error);
-          return of(registerFailureAction({errors: errResponce.error}));
-        })
-      );
-    })
-  ));
+  register$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(registerAction),
+      switchMap(({request}) => {
+        return this.authService.register(request).pipe(
+          map((currentUser: CurrentUserInterface) => {
+            return registerSuccessAction({currentUser});
+          }),
+          catchError((errResponce: HttpErrorResponse) => {
+            return of(registerFailureAction({
+              errors: {
+                message: errResponce.error.message,
+                timestamp: errResponce.error.timeStamp
+              }
+            }));
+          })
+        );
+      })
+    ));
 
   constructor(private actions$: Actions,
               private authService: AuthService) {

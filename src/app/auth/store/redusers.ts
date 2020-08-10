@@ -30,8 +30,6 @@ const authReduser = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      currentUser: null,
-      isLoggedIn: false,
       validationErrors: action.errors
     }))
 );

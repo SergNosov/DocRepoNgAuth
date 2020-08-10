@@ -15,10 +15,8 @@ export class AuthService {
 
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/token/generate-token';
-    return this.http.post<AuthResponseInterface>(url, data).pipe(
-      map(
-        (response: AuthResponseInterface) => response.user
-      )
-    );
+    return this.http
+      .post<AuthResponseInterface>(url, data)
+      .pipe(map((response: AuthResponseInterface) => response.result));
   }
 }
