@@ -18,8 +18,11 @@ export class RegisterEffect {
             return registerSuccessAction({currentUser});
           }),
           catchError((errResponce: HttpErrorResponse) => {
+            console.log('errResponce.status', errResponce.status);
+            console.log('errResponce.statusText', errResponce.error.statusText);
             return of(registerFailureAction({
               errors: {
+                status: errResponce.error.statusText,
                 message: errResponce.error.message,
                 timestamp: errResponce.error.timeStamp
               }

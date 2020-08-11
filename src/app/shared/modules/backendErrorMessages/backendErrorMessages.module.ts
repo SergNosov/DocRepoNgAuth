@@ -6,7 +6,7 @@ import {BackendErrorMessagesComponent} from './components/backendErrorMessages/b
 @NgModule({
   imports: [CommonModule],
   declarations: [BackendErrorMessagesComponent],
-  exports:[BackendErrorMessagesComponent]
+  exports: [BackendErrorMessagesComponent]
 })
 export class BackendErrorMessagesModule {
 }
