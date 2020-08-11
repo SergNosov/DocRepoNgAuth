@@ -9,9 +9,10 @@ import {AuthService} from './services/auth.service';
 import {EffectsModule} from '@ngrx/effects';
 import {RegisterEffect} from './store/effects/register.effect';
 import {BackendErrorMessagesModule} from '../shared/modules/backendErrorMessages/backendErrorMessages.module';
+import {PersistenceService} from '../shared/services/persistence.service';
 
 const routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+ // {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: RegisterComponent}
 ];
 
@@ -25,7 +26,7 @@ const routes = [
     EffectsModule.forFeature([RegisterEffect]),
     BackendErrorMessagesModule
   ],
-  providers: [AuthService]
+  providers: [AuthService, PersistenceService]
 })
 export class AuthModule {
 }
