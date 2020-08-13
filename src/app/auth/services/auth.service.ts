@@ -13,10 +13,19 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
+  getUser(response: AuthResponseInterface): CurrentUserInterface {
+    return response.result;
+  }
+
+  login(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/token/generate-token';
     return this.http
       .post<AuthResponseInterface>(url, data)
-      .pipe(map((response: AuthResponseInterface) => response.result));
+      .pipe(map(this.getUser));
+  }
+
+  getCurrentUser(): Observable<CurrentUserInterface>{
+    const url = environment.apiUrl + '/token/check-token';
+    return this.http.get(url).pipe(map(this.getUser));
   }
 }

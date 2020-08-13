@@ -10,6 +10,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {RegisterEffect} from './store/effects/register.effect';
 import {BackendErrorMessagesModule} from '../shared/modules/backendErrorMessages/backendErrorMessages.module';
 import {PersistenceService} from '../shared/services/persistence.service';
+import {GetCurrentUserEffect} from './store/effects/getCurrentUser.effect';
 
 const routes = [
  // {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -23,7 +24,7 @@ const routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     StoreModule.forFeature('auth', redusers),
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect, GetCurrentUserEffect]),
     BackendErrorMessagesModule
   ],
   providers: [AuthService, PersistenceService]

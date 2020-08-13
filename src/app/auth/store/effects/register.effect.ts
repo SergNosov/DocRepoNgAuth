@@ -15,15 +15,16 @@ export class RegisterEffect {
     this.actions$.pipe(
       ofType(registerAction),
       switchMap(({request}) => {
-        return this.authService.register(request).pipe(
+        return this.authService.login(request).pipe(
           map((currentUser: CurrentUserInterface) => {
             this.persistenceService.set('authToken', currentUser.token);
             return registerSuccessAction({currentUser});
           }),
           catchError((errResponce: HttpErrorResponse) => {
+            console.log('errResponce:', errResponce);
             return of(registerFailureAction({
               errors: {
-                status: errResponce.error.statusText,
+                status: errResponce.statusText + '; ' + errResponce.error.statusText,
                 message: errResponce.error.message,
                 timestamp: errResponce.error.timeStamp
               }
@@ -37,7 +38,7 @@ export class RegisterEffect {
     () => this.actions$.pipe(
       ofType(registerSuccessAction),
       tap(() => {
-          this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/');
       })
     ),
     {dispatch: false}
