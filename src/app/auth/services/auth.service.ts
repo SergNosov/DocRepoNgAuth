@@ -18,14 +18,14 @@ export class AuthService {
   }
 
   login(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-    const url = environment.apiUrl + '/token/generate-token';
+    const url = environment.apiUrl + '/login';
     return this.http
       .post<AuthResponseInterface>(url, data)
       .pipe(map(this.getUser));
   }
 
   getCurrentUser(): Observable<CurrentUserInterface>{
-    const url = environment.apiUrl + '/token/check-token';
+    const url = environment.apiUrl + '/login/check';
     return this.http.get(url).pipe(map(this.getUser));
   }
 }
