@@ -6,7 +6,7 @@ import {CurrentUserInterface} from '../../../types/currentUser.interface';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'mc-topBar',
+  selector: 'dr-topBar',
   templateUrl: './topBar.component.html',
   styleUrls: ['./topBar.component.css']
 })
