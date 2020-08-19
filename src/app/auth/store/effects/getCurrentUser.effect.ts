@@ -22,7 +22,7 @@ export class GetCurrentUserEffect {
             return getCurrentUserSuccessAction({currentUser});
           }),
           catchError(() => {
-            return of(getCurrentUserFailureAction);
+            return of(getCurrentUserFailureAction());
           })
         );
       })

@@ -4,21 +4,28 @@
       DocRepo
     </a>
     <ul class="nav navbar-nav pull-xs-right">
-      <li class="nav-item">
-        <a [routerLink]="['/']" class="nav-link">
-          Главная
-        </a>
-      </li>
       <ng-container *ngIf="isLoggedIn$ | async">
         <li class="nav-item">
-          <a [routerLink]="['/documents/new']" class="nav-link" >
+          <a [routerLink]="['/documents']" class="nav-link" >
             <i class="ion-compose"></i>
-            &nbsp; Новый документ
+            &nbsp; Документы
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/doctypes']" class="nav-link" >
+            <i class="ion-compose"></i>
+            &nbsp; Типы документов
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/senders']" class="nav-link" >
+            <i class="ion-compose"></i>
+            &nbsp; Субъекты
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            {{(currentUser$ | async).username}}
+            Пользователь: {{(currentUser$ | async).username}}
           </a>
         </li>
       </ng-container>
