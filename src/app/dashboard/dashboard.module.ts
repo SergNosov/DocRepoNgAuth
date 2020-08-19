@@ -6,18 +6,18 @@ import {StoreModule} from '@ngrx/store';
 import {redusers} from '../auth/store/redusers';
 import {DocumentsComponent} from './components/documents/documents.component';
 import {DoctypesComponent} from './components/doctypes/doctypes.component';
-import { SendersComponent } from './components/senders/senders.component';
+
 
 
 
 const routes = [
   {path: 'documents', component: DocumentsComponent},
   {path: 'doctypes', component: DoctypesComponent},
-  {path: 'senders', component: SendersComponent}
+  // {path: 'senders', component: SendersComponent}
 ];
 
 @NgModule({
-  declarations: [DocumentsComponent, DoctypesComponent, SendersComponent],
+  declarations: [DocumentsComponent, DoctypesComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

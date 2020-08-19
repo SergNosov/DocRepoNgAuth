@@ -18,4 +18,13 @@ export class PersistenceService {
       return null;
     }
   }
+
+  clear(key: string): void {
+    try {
+      localStorage.clear();
+    } catch (err) {
+      console.error('Error clearing localStorage', err);
+      return null;
+    }
+  }
 }

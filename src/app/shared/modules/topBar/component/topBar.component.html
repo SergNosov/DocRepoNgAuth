@@ -28,6 +28,12 @@
             Пользователь: {{(currentUser$ | async).username}}
           </a>
         </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-success btn-sm exit"
+                  (click)="exit()">
+            Выход
+          </button>
+        </li>
       </ng-container>
       <ng-container *ngIf="isAnonimous$ | async">
         <li class="nav-item">
