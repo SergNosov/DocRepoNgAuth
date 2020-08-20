@@ -26,9 +26,9 @@
           </fieldset>
         </form>
         <br>
-        <mc-backend-error-messages *ngIf = "backendErrors$ | async"
+        <dr-backend-error-messages *ngIf = "backendErrors$ | async"
                                    [backendErrors]="backendErrors$ | async">
-        </mc-backend-error-messages>
+        </dr-backend-error-messages>
       </div>
     </div>
   </div>

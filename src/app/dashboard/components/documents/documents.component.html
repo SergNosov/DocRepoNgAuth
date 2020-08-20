@@ -1,5 +1,7 @@
-<div>
-  <h1>
+<ng-container *ngIf="isLoggedIn$ | async">
+  <div>
+  <h3>
     documents component
-  </h1>
+  </h3>
 </div>
+</ng-container>
