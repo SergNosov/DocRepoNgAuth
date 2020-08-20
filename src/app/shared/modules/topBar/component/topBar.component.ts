@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {currentUserSelector, isAnonimousSelector, isLoggedInSelector} from '../../../../auth/store/selectors';
+import {currentUserSelector, isLoggedInSelector} from '../../../../auth/store/selectors';
 import {CurrentUserInterface} from '../../../types/currentUser.interface';
 import {PersistenceService} from '../../../services/persistence.service';
 import {Router} from '@angular/router';
+import {getCurrentUserAction} from 'src/app/auth/store/actions/getCurrentUser.action';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,7 +15,6 @@ import {Router} from '@angular/router';
 })
 export class TopBarComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
-  isAnonimous$: Observable<boolean>;
   currentUser$: Observable<CurrentUserInterface | null>;
 
   constructor(private store: Store,
@@ -24,13 +24,12 @@ export class TopBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.store.pipe(select(isLoggedInSelector));
-    this.isAnonimous$ = this.store.pipe(select(isAnonimousSelector));
     this.currentUser$ = this.store.pipe(select(currentUserSelector));
   }
 
   exit() {
-    console.log('exit button click....');
-    this.persistenceService.clear('authToken');
-    // this.router.navigate(['/']);
+    this.persistenceService.clear();
+    this.store.dispatch(getCurrentUserAction());
+    this.router.navigate(['/']);
   }
 }
