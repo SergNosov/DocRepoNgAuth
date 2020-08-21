@@ -6,12 +6,14 @@ import {GetFeedEffect} from './store/effects/getFeed.effect';
 import {StoreModule} from '@ngrx/store';
 import {redusers} from './store/redusers';
 import {FeedServices} from './services/feed.services';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     EffectsModule.forFeature([GetFeedEffect]),
-    StoreModule.forFeature('feed', redusers)
+    StoreModule.forFeature('feed', redusers),
+    RouterModule
   ],
   declarations: [FeedComponent],
   exports: [FeedComponent],

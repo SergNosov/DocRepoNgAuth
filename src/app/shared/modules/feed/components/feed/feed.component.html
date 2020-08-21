@@ -1,1 +1,12 @@
-<p>feed works!</p>
+<div *ngIf="isLoading$ | async">Loading...</div>
+<div *ngIf="errors$ | async">Some error happened...</div>
+
+<div *ngIf="feed$ | async">
+  <div class="article-preview" *ngFor="let doctypes of (feed$ | async)?.doctypes">
+    <div class="info">
+     <span>id = {{doctypes.id}}</span>
+      <br>
+      <span>title = {{doctypes.title}}</span>
+    </div>
+  </div>
+</div>

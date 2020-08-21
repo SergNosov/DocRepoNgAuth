@@ -12,6 +12,10 @@ export class FeedServices {
 
   getFeed(url: string): Observable<GetFeedResponseInterface> {
     const fullUrl = environment.apiUrl + url;
-    return this.http.get<GetFeedResponseInterface>(fullUrl);
+    let resp: Observable<GetFeedResponseInterface>;
+    resp = this.http.get<GetFeedResponseInterface>(fullUrl);
+
+    console.log('---resp: ', resp);
+    return resp;
   }
 }
