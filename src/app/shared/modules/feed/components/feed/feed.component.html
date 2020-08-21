@@ -2,11 +2,17 @@
 <div *ngIf="errors$ | async">Some error happened...</div>
 
 <div *ngIf="feed$ | async">
-  <div class="article-preview" *ngFor="let doctypes of (feed$ | async)?.doctypes">
+  <div class="article-preview" *ngFor="let doctype of (feed$ | async)">
     <div class="info">
-     <span>id = {{doctypes.id}}</span>
+     <span>
+       {{doctype.id}}
+     </span>
       <br>
-      <span>title = {{doctypes.title}}</span>
+      <br>
+      <span>Тип документа:</span>
+      <span>
+        <h5>{{doctype.title}}</h5>
+      </span>
     </div>
   </div>
 </div>

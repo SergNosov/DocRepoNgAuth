@@ -1,7 +1,8 @@
 import {GetFeedResponseInterface} from './getFeedResponse.interface';
+import {DoctypeInterface} from '../../../types/doctype.interface';
 
 export interface FeedStateInterface {
   isLoading: boolean;
   error: string | null;
-  data: GetFeedResponseInterface | null;
+  data: DoctypeInterface[] | null;
 }

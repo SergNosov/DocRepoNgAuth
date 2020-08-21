@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {GetFeedResponseInterface} from '../../types/getFeedResponse.interface';
 import {errorSelector, feedSelector, isLoadingSelector} from '../../store/selectors';
 import {first, map} from 'rxjs/operators';
+import {DoctypeInterface} from '../../../../types/doctype.interface';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class FeedComponent implements OnInit {
 
   isLoading$: Observable<boolean>;
   errors$: Observable<string | null>;
-  feed$: Observable<GetFeedResponseInterface | null>;
+  feed$: Observable<DoctypeInterface[] | null>;
 
   constructor(private store: Store) {
   }

@@ -1,6 +1,7 @@
 import {createAction, props} from '@ngrx/store';
 import {ActionTypes} from '../actionTypes';
 import {GetFeedResponseInterface} from '../../types/getFeedResponse.interface';
+import {DoctypeInterface} from '../../../../types/doctype.interface';
 
 export const getFeedAction = createAction(
   ActionTypes.GET_FEED,
@@ -9,7 +10,7 @@ export const getFeedAction = createAction(
 
 export const getFeedSuccessAction = createAction(
   ActionTypes.GET_FEED_SUCCESS,
-  props<{ feed: GetFeedResponseInterface }>()
+  props<{ feed: DoctypeInterface[] }>()
 );
 
 export const getFeedFailureAction = createAction(
