@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {GetFeedResponseInterface} from '../types/getFeedResponse.interface';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {DoctypeInterface} from '../../../types/doctype.interface';
-import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class FeedServices {

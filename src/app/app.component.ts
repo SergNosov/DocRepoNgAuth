@@ -10,7 +10,8 @@ import {getCurrentUserAction} from './auth/store/actions/getCurrentUser.action';
 export class AppComponent implements OnInit {
   title = 'DocRepoAuth';
 
-  constructor(private store: Store){}
+  constructor(private store: Store) {
+  }
 
   ngOnInit(): void {
     this.store.dispatch(getCurrentUserAction());
