@@ -8,9 +8,6 @@ import {DocumentsComponent} from './components/documents/documents.component';
 import {DoctypesComponent} from './components/doctypes/doctypes.component';
 import {SendersComponent} from './components/senders/senders.component';
 
-
-
-
 const routes = [
   {path: 'documents', component: DocumentsComponent},
   {path: 'doctypes', component: DoctypesComponent},
