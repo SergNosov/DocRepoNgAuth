@@ -1,1 +1,19 @@
 <p>doctypes works!</p>
+<ng-container *ngIf="doctypes$ | async">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let doctype of doctypes$">
+    <!--    (click)="navigateToDoctype(doctype.id)" -->
+
+      <td>{{ doctype.id }}</td>
+      <td>{{ doctype.title }}</td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>

@@ -3,10 +3,14 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
 import {StoreModule} from '@ngrx/store';
-import {redusers} from '../auth/store/redusers';
+
 import {DocumentsComponent} from './components/documents/documents.component';
 import {DoctypesComponent} from './components/doctypes/doctypes.component';
 import {SendersComponent} from './components/senders/senders.component';
+import {DoctypeServices} from './services/doctype.services';
+import {doctypeReducers} from './store/redusers/doctype.redusers';
+import {EffectsModule} from '@ngrx/effects';
+import {DoctypeEffects} from './store/effects/doctype.effects';
 
 const routes = [
   {path: 'documents', component: DocumentsComponent},
@@ -23,9 +27,10 @@ const routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('auth', redusers)
+    EffectsModule.forFeature([DoctypeEffects]),
+    StoreModule.forFeature('doctypes', doctypeReducers)
   ],
-  providers: []
+  providers: [DoctypeServices]
 })
 export class DashboardModule {
 }

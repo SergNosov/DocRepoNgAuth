@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
-  doctypesUrl: this.apiUrl + '/doctypes'
+  doctypesUrl: 'http://localhost:8080/api/doctypes'
 };
 
 /*
