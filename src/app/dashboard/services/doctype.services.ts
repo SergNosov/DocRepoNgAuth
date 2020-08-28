@@ -10,8 +10,6 @@ export class DoctypeServices {
   }
 
   getDoctypes(): Observable<DoctypeInterface[]> {
-    console.log('DoctypeServices.getDoctypes');
-
     const url = environment.doctypesUrl;
     let resp: Observable<DoctypeInterface[]>;
 

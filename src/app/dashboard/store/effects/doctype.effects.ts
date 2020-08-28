@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
 import {DoctypeActions, DoctypeActionTypes, GetDoctype, GetDoctypesSuccess, GetDoctypeSuccess} from '../actions/doctypeActionTypes';
-import {switchMap, map, withLatestFrom} from 'rxjs/operators';
+import {switchMap, map, withLatestFrom, catchError} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {AppStateInterface} from '../../../shared/types/appState.interface';
 import {DoctypeInterface} from '../../types/doctype.interface';
 import {DoctypeServices} from '../../services/doctype.services';
 import {selectDoctypeList} from '../selectors/doctype.selector';
+import {getCurrentUserFailureAction} from '../../../auth/store/actions/getCurrentUser.action';
 
 @Injectable()
 export class DoctypeEffects {
@@ -32,6 +33,9 @@ export class DoctypeEffects {
   getDoctypes$ = this.actions.pipe(
     ofType<DoctypeActions>(DoctypeActionTypes.GetDoctypes),
     switchMap(() => this.doctypeService.getDoctypes()),
-    switchMap((doctypes: DoctypeInterface[]) => of(new GetDoctypesSuccess(doctypes)))
+    switchMap((doctypes: DoctypeInterface[]) => of(new GetDoctypesSuccess(doctypes))),
+    catchError(() => {
+      return of(getCurrentUserFailureAction());
+    })
   );
 }

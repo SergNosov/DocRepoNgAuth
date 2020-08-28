@@ -5,6 +5,8 @@ import {AppStateInterface} from '../../../shared/types/appState.interface';
 import {select, Store} from '@ngrx/store';
 import {selectDoctypeList} from '../../store/selectors/doctype.selector';
 import {GetDoctypes} from '../../store/actions/doctypeActionTypes';
+import {Router} from '@angular/router';
+import {isLoggedInSelector} from '../../../auth/store/selectors';
 
 @Component({
   selector: 'app-doctypes',
@@ -13,16 +15,29 @@ import {GetDoctypes} from '../../store/actions/doctypeActionTypes';
 })
 export class DoctypesComponent implements OnInit {
 
-  doctypes$: Observable<DoctypeInterface[]> | null;
+  private doctypes$: Observable<DoctypeInterface[]> | null;
+  private isLoggedIn$: Observable<boolean>;
 
-  // doctypes$ = this.store.pipe(select(selectDoctypeList));
-
-  constructor(private store: Store<AppStateInterface>) {
+  constructor(private store: Store<AppStateInterface>,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.store.dispatch(new GetDoctypes());
-    this.doctypes$ = this.store.pipe(select(selectDoctypeList));
+    this.initializeValues();
+    this.fetchData();
   }
 
+  private initializeValues(): void {
+    this.doctypes$ = this.store.pipe(select(selectDoctypeList));
+    this.isLoggedIn$ = this.store.pipe(select(isLoggedInSelector));
+  }
+
+  private fetchData(): void {
+    this.store.dispatch(new GetDoctypes());
+  }
+
+  navigateToDoctype(id: number): void {
+    console.log('edit. id:', id);
+    this.router.navigate(['doctype', id]);
+  }
 }

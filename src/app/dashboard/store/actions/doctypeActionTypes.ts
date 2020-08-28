@@ -4,9 +4,10 @@ import {DoctypeInterface} from '../../types/doctype.interface';
 
 export enum DoctypeActionTypes {
   GetDoctypes = '[Doctype] Get Doctypes',
-  GetDoctypesSuccess = '[Doctype] Get Doctypes Success',
+  GetDoctypesSuccess = '[Doctype] Get Doctypes success',
+  GetDoctypeFailure = '[Doctype] Get Doctypes failure',
   GetDoctype = '[Doctype] Get Doctype',
-  GetDoctypeSuccess = '[Doctype] Get Doctype Success',
+  GetDoctypeSuccess = '[Doctype] Get Doctype success',
 }
 
 export class GetDoctypes implements Action {
@@ -18,6 +19,10 @@ export class GetDoctypesSuccess implements Action {
 
   constructor(public  payload: DoctypeInterface[]) {
   }
+}
+
+export class GetDoctypesFailure implements Action {
+  public readonly type = DoctypeActionTypes.GetDoctypeFailure;
 }
 
 export class GetDoctype implements Action {

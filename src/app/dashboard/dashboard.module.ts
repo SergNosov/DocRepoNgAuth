@@ -11,10 +11,12 @@ import {DoctypeServices} from './services/doctype.services';
 import {doctypeReducers} from './store/redusers/doctype.redusers';
 import {EffectsModule} from '@ngrx/effects';
 import {DoctypeEffects} from './store/effects/doctype.effects';
+import {DoctypeComponent} from './components/doctype/doctype.component';
 
 const routes = [
   {path: 'documents', component: DocumentsComponent},
   {path: 'doctypes', component: DoctypesComponent},
+  {path: 'doctype/:id', component: DoctypeComponent},
   {path: 'senders', component: SendersComponent}
 ];
 
@@ -22,6 +24,7 @@ const routes = [
   declarations: [
     DocumentsComponent,
     DoctypesComponent,
+    DoctypeComponent,
     SendersComponent
   ],
   imports: [

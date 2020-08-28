@@ -1,18 +1,28 @@
 <p>doctypes works!</p>
-<ng-container *ngIf="doctypes$ | async">
-  <table class="table table-hover">
-    <thead class="thead-dark">
+<ng-container *ngIf="isLoggedIn$ | async">
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Type</th>
+      <th scope="col">Тип</th>
+      <th scope="col">Действие</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let doctype of doctypes$">
+    <tr *ngFor="let doctype of (doctypes$ | async)">
     <!--    (click)="navigateToDoctype(doctype.id)" -->
 
       <td>{{ doctype.id }}</td>
       <td>{{ doctype.title }}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm"
+                (click)="navigateToDoctype(doctype.id)">
+          Редактировать
+        </button>
+        <button type="button" class="btn btn-danger btn-sm">
+          Удалить
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
