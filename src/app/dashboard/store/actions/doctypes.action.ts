@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 import {DoctypeInterface} from '../../types/doctype.interface';
 
 
-export enum DoctypeActionTypes {
+export enum DoctypesAction {
   GetDoctypes = '[Doctype] Get Doctypes',
   GetDoctypesSuccess = '[Doctype] Get Doctypes success',
   GetDoctypeFailure = '[Doctype] Get Doctypes failure',
@@ -11,29 +11,29 @@ export enum DoctypeActionTypes {
 }
 
 export class GetDoctypes implements Action {
-  public readonly type = DoctypeActionTypes.GetDoctypes;
+  public readonly type = DoctypesAction.GetDoctypes;
 }
 
 export class GetDoctypesSuccess implements Action {
-  public readonly type = DoctypeActionTypes.GetDoctypesSuccess;
+  public readonly type = DoctypesAction.GetDoctypesSuccess;
 
   constructor(public  payload: DoctypeInterface[]) {
   }
 }
 
 export class GetDoctypesFailure implements Action {
-  public readonly type = DoctypeActionTypes.GetDoctypeFailure;
+  public readonly type = DoctypesAction.GetDoctypeFailure;
 }
 
 export class GetDoctype implements Action {
-  public readonly type = DoctypeActionTypes.GetDoctype;
+  public readonly type = DoctypesAction.GetDoctype;
 
   constructor(public payload: number) {
   }
 }
 
 export class GetDoctypeSuccess implements Action {
-  public readonly type = DoctypeActionTypes.GetDoctypeSuccess;
+  public readonly type = DoctypesAction.GetDoctypeSuccess;
 
   constructor(public  payload: DoctypeInterface) {
   }

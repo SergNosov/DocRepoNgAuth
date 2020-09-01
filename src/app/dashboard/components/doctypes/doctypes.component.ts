@@ -4,9 +4,10 @@ import {DoctypeInterface} from '../../types/doctype.interface';
 import {AppStateInterface} from '../../../shared/types/appState.interface';
 import {select, Store} from '@ngrx/store';
 import {selectDoctypeList} from '../../store/selectors/doctype.selector';
-import {GetDoctypes} from '../../store/actions/doctypeActionTypes';
+import {GetDoctype, GetDoctypes} from '../../store/actions/doctypes.action';
 import {Router} from '@angular/router';
 import {isLoggedInSelector} from '../../../auth/store/selectors';
+import {OpenDoctypeDialog} from '../../store/actions/doctypeDialog.action';
 
 @Component({
   selector: 'app-doctypes',
@@ -37,7 +38,12 @@ export class DoctypesComponent implements OnInit {
   }
 
   navigateToDoctype(id: number): void {
-    console.log('edit. id:', id);
     this.router.navigate(['doctype', id]);
+  }
+
+  openDialog(doctype: DoctypeInterface): void {
+    console.log('--- doctype:', doctype);
+    this.store.dispatch(new GetDoctype(doctype.id));
+    this.store.dispatch(new OpenDoctypeDialog(doctype));
   }
 }

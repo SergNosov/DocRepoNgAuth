@@ -12,6 +12,10 @@ import {doctypeReducers} from './store/redusers/doctype.redusers';
 import {EffectsModule} from '@ngrx/effects';
 import {DoctypeEffects} from './store/effects/doctype.effects';
 import {DoctypeComponent} from './components/doctype/doctype.component';
+import {DoctypeDialogComponent} from './components/doctypeDialog/doctypeDialog.component';
+import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {FormsModule} from '@angular/forms';
+import {DoctypeDialogEffects} from './store/effects/doctypeDialog.effects';
 
 const routes = [
   {path: 'documents', component: DocumentsComponent},
@@ -20,19 +24,26 @@ const routes = [
   {path: 'senders', component: SendersComponent}
 ];
 
+const MATERIAL_COMPONENTS = [MatDialogModule, MatButtonModule, MatInputModule];
+
 @NgModule({
   declarations: [
     DocumentsComponent,
     DoctypesComponent,
     DoctypeComponent,
+    DoctypeDialogComponent,
     SendersComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    EffectsModule.forFeature([DoctypeEffects]),
-    StoreModule.forFeature('doctypes', doctypeReducers)
+    EffectsModule.forFeature([DoctypeEffects, DoctypeDialogEffects]),
+    StoreModule.forFeature('doctypes', doctypeReducers),
+    ...MATERIAL_COMPONENTS,
+    FormsModule,
+    MatDialogModule
   ],
+  entryComponents: [DoctypeDialogComponent],
   providers: [DoctypeServices]
 })
 export class DashboardModule {

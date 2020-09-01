@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
-import {DoctypeActions, DoctypeActionTypes, GetDoctype, GetDoctypesSuccess, GetDoctypeSuccess} from '../actions/doctypeActionTypes';
+import {DoctypeActions, DoctypesAction, GetDoctype, GetDoctypesSuccess, GetDoctypeSuccess} from '../actions/doctypes.action';
 import {switchMap, map, withLatestFrom, catchError} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {AppStateInterface} from '../../../shared/types/appState.interface';
@@ -20,7 +20,7 @@ export class DoctypeEffects {
 
   @Effect()
   getDoctype$ = this.actions.pipe(
-    ofType<GetDoctype>(DoctypeActionTypes.GetDoctype),
+    ofType<GetDoctype>(DoctypesAction.GetDoctype),
     map(action => action.payload),
     withLatestFrom(this.store.pipe(select(selectDoctypeList))),
     switchMap(([id, users]) => {
@@ -31,7 +31,7 @@ export class DoctypeEffects {
 
   @Effect()
   getDoctypes$ = this.actions.pipe(
-    ofType<DoctypeActions>(DoctypeActionTypes.GetDoctypes),
+    ofType<DoctypeActions>(DoctypesAction.GetDoctypes),
     switchMap(() => this.doctypeService.getDoctypes()),
     switchMap((doctypes: DoctypeInterface[]) => of(new GetDoctypesSuccess(doctypes))),
     catchError(() => {

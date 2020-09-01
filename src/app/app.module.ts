@@ -13,6 +13,7 @@ import {TopBarModule} from './shared/modules/topBar/topBar.module';
 import {PersistenceService} from './shared/services/persistence.service';
 import {AuthInterceptor} from './shared/services/authinterceptor.service';
 import {DashboardModule} from './dashboard/dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {DashboardModule} from './dashboard/dashboard.module';
       logOnly: environment.production
     }),
     TopBarModule,
-    DashboardModule
+    DashboardModule,
+    BrowserAnimationsModule
   ],
   providers: [
     PersistenceService,

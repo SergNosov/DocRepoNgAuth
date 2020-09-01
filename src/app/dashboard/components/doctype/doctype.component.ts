@@ -4,7 +4,7 @@ import {DoctypeInterface} from '../../types/doctype.interface';
 import {AppStateInterface} from '../../../shared/types/appState.interface';
 import {select, Store} from '@ngrx/store';
 import {selectSelectedDoctype} from '../../store/selectors/doctype.selector';
-import {GetDoctype} from '../../store/actions/doctypeActionTypes';
+import {GetDoctype} from '../../store/actions/doctypes.action';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
