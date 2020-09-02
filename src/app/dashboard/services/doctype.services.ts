@@ -11,9 +11,14 @@ export class DoctypeServices {
 
   getDoctypes(): Observable<DoctypeInterface[]> {
     const url = environment.doctypesUrl;
-    let resp: Observable<DoctypeInterface[]>;
+    const resp: Observable<DoctypeInterface[]> = this.http.get<DoctypeInterface[]>(url);
+    return resp;
+  }
 
-    resp = this.http.get<DoctypeInterface[]>(url);
+  saveDoctype(doctype: DoctypeInterface): Observable<DoctypeInterface> {
+    console.log('--- doctype in service:', doctype);
+    const url = environment.doctypesUrl;
+    const resp: Observable<DoctypeInterface> = this.http.post<DoctypeInterface>(url, doctype);
     return resp;
   }
 }

@@ -1,10 +1,9 @@
 import {DoctypeStateInterface, initialDoctypesState} from '../../types/doctypeStateInterface';
-import {DoctypeActions, DoctypesAction} from '../actions/doctypes.action';
-import {DoctypeDialogAction, DoctypeDialogActionTypes} from '../actions/doctypeDialog.action';
+import {DoctypeActions, DoctypesActionTypes} from '../actions/doctypesActionTypes';
 
-export const doctypeDialogReducers = (state = initialDoctypesState, action: DoctypeDialogAction): DoctypeStateInterface => {
+export const doctypeDialogReducers = (state = initialDoctypesState, action: DoctypeActions): DoctypeStateInterface => {
   switch (action.type) {
-    case DoctypeDialogActionTypes.CloseDialog: {
+    case DoctypesActionTypes.CloseDialog: {
       return {
         ...state,
         selectedDoctype: null

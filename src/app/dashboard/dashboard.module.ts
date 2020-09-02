@@ -13,10 +13,9 @@ import {EffectsModule} from '@ngrx/effects';
 import {DoctypeEffects} from './store/effects/doctype.effects';
 import {DoctypeComponent} from './components/doctype/doctype.component';
 import {DoctypeDialogComponent} from './components/doctypeDialog/doctypeDialog.component';
-import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
-import {FormsModule} from '@angular/forms';
+import {MatButtonModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DoctypeDialogEffects} from './store/effects/doctypeDialog.effects';
-import {doctypeDialogReducers} from './store/redusers/doctypeDialog.reduser';
 
 const routes = [
   {path: 'documents', component: DocumentsComponent},
@@ -40,10 +39,10 @@ const MATERIAL_COMPONENTS = [MatDialogModule, MatButtonModule, MatInputModule];
     RouterModule.forChild(routes),
     EffectsModule.forFeature([DoctypeEffects, DoctypeDialogEffects]),
     StoreModule.forFeature('doctypes', doctypeReducers),
-    // StoreModule.forFeature('doctypes', doctypeDialogReducers),
     ...MATERIAL_COMPONENTS,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   entryComponents: [DoctypeDialogComponent],
   providers: [DoctypeServices]

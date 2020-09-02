@@ -3,18 +3,18 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {AppStateInterface} from '../../../shared/types/appState.interface';
 import {MatDialog} from '@angular/material';
 import {select, Store} from '@ngrx/store';
-import {CloseDoctypeDialog, DoctypeDialogActionTypes, OpenDoctypeDialog, ResultDoctypeDialog} from '../actions/doctypeDialog.action';
 import {flatMap, map, withLatestFrom} from 'rxjs/operators';
 import {selectSelectedDoctype} from '../selectors/doctype.selector';
 import {DoctypeDialogComponent} from '../../components/doctypeDialog/doctypeDialog.component';
 import {DoctypeInterface} from '../../types/doctype.interface';
+import {CloseDoctypeDialog, DoctypesActionTypes, OpenDoctypeDialog, ResultDoctypeDialog} from '../actions/doctypesActionTypes';
 
 @Injectable()
 export class DoctypeDialogEffects {
 
   @Effect()
   openDialog = this.actions.pipe(
-    ofType<OpenDoctypeDialog>(DoctypeDialogActionTypes.OpenDialog),
+    ofType<OpenDoctypeDialog>(DoctypesActionTypes.OpenDialog),
     withLatestFrom(this.store.pipe(select(selectSelectedDoctype))),
     flatMap(([_, doctype]) => {
       const dialogRef = this.dialog.open(DoctypeDialogComponent, {data: doctype});

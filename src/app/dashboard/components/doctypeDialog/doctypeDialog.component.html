@@ -1,11 +1,16 @@
-<h1 mat-dialog-title>{{data.id}}</h1>
-<div mat-dialog-content>
-  <p>Тип документа:</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.title">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Закрыть</button>
-  <button mat-button [mat-dialog-close]="data.title" cdkFocusInitial>Сохранить</button>
-</div>
+<form [formGroup]="form" (ngSubmit)="submit(form)">
+  <h1 mat-dialog-title>{{data.id}}</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput
+             placeholder="Тип документа:"
+             formControlName="title"
+             value={{data.title}}
+      >
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button  type="button" (click)="close()">Закрыть</button>
+    <button mat-button type = "submit">Сохранить</button>
+  </div>
+</form>

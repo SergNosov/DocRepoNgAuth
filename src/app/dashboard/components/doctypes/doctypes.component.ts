@@ -4,10 +4,9 @@ import {DoctypeInterface} from '../../types/doctype.interface';
 import {AppStateInterface} from '../../../shared/types/appState.interface';
 import {select, Store} from '@ngrx/store';
 import {selectDoctypeList} from '../../store/selectors/doctype.selector';
-import {GetDoctype, GetDoctypes} from '../../store/actions/doctypes.action';
+import {GetDoctype, GetDoctypes, OpenDoctypeDialog} from '../../store/actions/doctypesActionTypes';
 import {Router} from '@angular/router';
 import {isLoggedInSelector} from '../../../auth/store/selectors';
-import {OpenDoctypeDialog} from '../../store/actions/doctypeDialog.action';
 
 @Component({
   selector: 'app-doctypes',
