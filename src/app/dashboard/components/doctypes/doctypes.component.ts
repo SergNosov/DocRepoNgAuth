@@ -42,7 +42,6 @@ export class DoctypesComponent implements OnInit {
   }
 
   openDialog(doctype: DoctypeInterface): void {
-    console.log('--- doctype:', doctype);
     this.store.dispatch(new GetDoctype(doctype.id));
     this.store.dispatch(new OpenDoctypeDialog(doctype));
   }

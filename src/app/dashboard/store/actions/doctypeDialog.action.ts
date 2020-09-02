@@ -8,20 +8,20 @@ export enum DoctypeDialogActionTypes {
 }
 
 export class OpenDoctypeDialog implements Action {
-  readonly type = DoctypeDialogActionTypes.OpenDialog;
+  public readonly type = DoctypeDialogActionTypes.OpenDialog;
 
   constructor(public payload: DoctypeInterface) {
   }
 }
 
 export class CloseDoctypeDialog implements Action {
-  readonly type = DoctypeDialogActionTypes.CloseDialog;
+  public readonly type = DoctypeDialogActionTypes.CloseDialog;
 }
 
 export class ResultDoctypeDialog implements Action {
-  readonly type = DoctypeDialogActionTypes.ResultDialog;
+  public readonly type = DoctypeDialogActionTypes.ResultDialog;
 
-  constructor(public payload: { data: DoctypeInterface }) {
+  constructor(public payload: DoctypeInterface) {
   }
 }
 

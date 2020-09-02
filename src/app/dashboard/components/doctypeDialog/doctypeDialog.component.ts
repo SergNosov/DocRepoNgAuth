@@ -11,8 +11,7 @@ export class DoctypeDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DoctypeDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log('---constructor');
+    @Inject(MAT_DIALOG_DATA) public data: DoctypeInterface) {
   }
 
   ngOnInit(): void {
