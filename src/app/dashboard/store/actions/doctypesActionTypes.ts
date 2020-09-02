@@ -10,10 +10,10 @@ export enum DoctypesActionTypes {
   GetDoctypeSuccess = '[Doctype] Get Doctype success',
 
   OpenDialog = '[Doctype Dialog] Open dialog',
-  CloseDialog = '[Doctype Dialog] Close dialog',
-  ResultDialog = '[Doctype Dialog] Result dialog',
-  ResultDialogSuccess = '[Doctype Dialog] Result dialog success',
-  ResultDialogFailure = '[Doctype Dialog] Result dialog failure'
+  CancelDialog = '[Doctype Dialog] Cancel dialog',
+  SubmitDialog = '[Doctype Dialog] Submit dialog',
+  SubmitDialogSuccess = '[Doctype Dialog] Result dialog success',
+  SubmitDialogFailure = '[Doctype Dialog] Result dialog failure'
 }
 
 export class GetDoctypes implements Action {
@@ -52,26 +52,26 @@ export class OpenDoctypeDialog implements Action {
   }
 }
 
-export class CloseDoctypeDialog implements Action {
-  public readonly type = DoctypesActionTypes.CloseDialog;
+export class CancelDoctypeDialog implements Action {
+  public readonly type = DoctypesActionTypes.CancelDialog;
 }
 
-export class ResultDoctypeDialog implements Action {
-  public readonly type = DoctypesActionTypes.ResultDialog;
+export class SubmitDoctypeDialog implements Action {
+  public readonly type = DoctypesActionTypes.SubmitDialog;
 
   constructor(public payload: DoctypeInterface) {
   }
 }
 
-export class ResultDoctypeDialogSuccess implements Action {
-  public readonly type = DoctypesActionTypes.ResultDialogSuccess;
+export class SubmitDoctypeDialogSuccess implements Action {
+  public readonly type = DoctypesActionTypes.SubmitDialogSuccess;
 
   constructor(public payload: DoctypeInterface) {
   }
 }
 
-export class ResultDoctypeDialogFailure implements Action {
-  public readonly type = DoctypesActionTypes.ResultDialogFailure;
+export class SubmitDoctypeDialogFailure implements Action {
+  public readonly type = DoctypesActionTypes.SubmitDialogFailure;
 
   constructor(public payload: BackendErrorsInterface) {
   }
@@ -83,7 +83,7 @@ export type DoctypeActions =
   | GetDoctypesSuccess
   | GetDoctypeSuccess
   | OpenDoctypeDialog
-  | CloseDoctypeDialog
-  | ResultDoctypeDialog
-  | ResultDoctypeDialogSuccess
-  | ResultDoctypeDialogFailure;
+  | CancelDoctypeDialog
+  | SubmitDoctypeDialog
+  | SubmitDoctypeDialogSuccess
+  | SubmitDoctypeDialogFailure;

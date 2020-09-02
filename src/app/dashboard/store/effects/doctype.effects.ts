@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {select, Store} from '@ngrx/store';
 import {
-  CloseDoctypeDialog,
+  CancelDoctypeDialog,
   DoctypeActions,
   DoctypesActionTypes,
   GetDoctype,
   GetDoctypesSuccess,
-  GetDoctypeSuccess, OpenDoctypeDialog, ResultDoctypeDialog, ResultDoctypeDialogFailure, ResultDoctypeDialogSuccess,
+  GetDoctypeSuccess, OpenDoctypeDialog, SubmitDoctypeDialog, SubmitDoctypeDialogFailure, SubmitDoctypeDialogSuccess,
 } from '../actions/doctypesActionTypes';
 import {switchMap, map, withLatestFrom, catchError, mergeMap, flatMap} from 'rxjs/operators';
 import {of} from 'rxjs';
@@ -50,18 +50,6 @@ export class DoctypeEffects {
   );
 
   @Effect()
-  saveDoctype$ = this.actions.pipe(
-    ofType<ResultDoctypeDialog>(DoctypesActionTypes.ResultDialog),
-    mergeMap(
-      (data) => this.doctypeService.saveDoctype(data.payload)
-        .pipe(
-          map(() => new ResultDoctypeDialogSuccess(data.payload)),
-          catchError(error => of(new ResultDoctypeDialogFailure(error)))
-        )
-    )
-  );
-
-  @Effect()
   openDialog = this.actions.pipe(
     ofType<OpenDoctypeDialog>(DoctypesActionTypes.OpenDialog),
     withLatestFrom(this.store.pipe(select(selectSelectedDoctype))),
@@ -71,9 +59,21 @@ export class DoctypeEffects {
     }),
     map((result: DoctypeInterface) => {
       if (result === undefined) {
-        return new CloseDoctypeDialog();
+        return new CancelDoctypeDialog();
       }
-      return new ResultDoctypeDialog(result);
+      return new SubmitDoctypeDialog(result);
     }),
+  );
+
+  @Effect()
+  saveDoctype$ = this.actions.pipe(
+    ofType<SubmitDoctypeDialog>(DoctypesActionTypes.SubmitDialog),
+    mergeMap(
+      (data) => this.doctypeService.saveDoctype(data.payload)
+        .pipe(
+          map(() => new SubmitDoctypeDialogSuccess(data.payload)),
+          catchError(error => of(new SubmitDoctypeDialogFailure(error)))
+        )
+    )
   );
 }
