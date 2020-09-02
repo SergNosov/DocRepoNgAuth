@@ -66,10 +66,10 @@ export class DoctypeEffects {
   );
 
   @Effect()
-  saveDoctype$ = this.actions.pipe(
+  updateDoctype$ = this.actions.pipe(
     ofType<SubmitDoctypeDialog>(DoctypesActionTypes.SubmitDialog),
     mergeMap(
-      (data) => this.doctypeService.saveDoctype(data.payload)
+      (data) => this.doctypeService.updateDoctype(data.payload)
         .pipe(
           map(() => new SubmitDoctypeDialogSuccess(data.payload)),
           catchError(error => of(new SubmitDoctypeDialogFailure(error)))
