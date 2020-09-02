@@ -18,13 +18,22 @@ export const doctypeReducers = (state = initialDoctypesState, action: DoctypeAct
     case DoctypesActionTypes.CloseDialog: {
       return {
         ...state,
-        selectedDoctype: null
+        selectedDoctype: null,
+        backendErrors: null
       };
     }
     case DoctypesActionTypes.ResultDialogSuccess: {
       return {
         ...state,
-        selectedDoctype: action.payload
+        selectedDoctype: action.payload,
+        backendErrors: null
+      };
+    }
+    case DoctypesActionTypes.ResultDialogFailure: {
+      return {
+        ...state,
+        selectedDoctype: null,
+        backendErrors: action.payload
       };
     }
 

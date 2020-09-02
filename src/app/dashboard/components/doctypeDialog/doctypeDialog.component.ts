@@ -19,7 +19,7 @@ export class DoctypeDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: ''
+      title: this.data.title
     });
   }
 

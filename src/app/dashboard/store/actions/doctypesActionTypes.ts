@@ -71,7 +71,7 @@ export class ResultDoctypeDialogSuccess implements Action {
 }
 
 export class ResultDoctypeDialogFailure implements Action {
-  public readonly type = DoctypesActionTypes.GetDoctypeFailure;
+  public readonly type = DoctypesActionTypes.ResultDialogFailure;
 
   constructor(public payload: BackendErrorsInterface) {
   }
