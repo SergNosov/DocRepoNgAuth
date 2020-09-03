@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {DoctypeInterface} from '../../types/doctype.interface';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-doctype-dialog',
@@ -28,6 +28,10 @@ export class DoctypeDialogComponent implements OnInit {
   }
 
   submit(form: FormGroup) {
-    this.dialogRef.close({id: this.data.id, title: this.form.value.title});
+    if (this.form.value.title != this.data.title) {
+      this.dialogRef.close({id: this.data.id, title: this.form.value.title});
+    } else {
+      this.close();
+    }
   }
 }

@@ -5,7 +5,7 @@ import {
   CancelDoctypeDialog,
   DoctypeActions,
   DoctypesActionTypes,
-  GetDoctype,
+  GetDoctype, GetDoctypes,
   GetDoctypesSuccess,
   GetDoctypeSuccess, OpenDoctypeDialog, SubmitDoctypeDialog, SubmitDoctypeDialogFailure, SubmitDoctypeDialogSuccess,
 } from '../actions/doctypesActionTypes';
@@ -59,6 +59,7 @@ export class DoctypeEffects {
     }),
     map((result: DoctypeInterface) => {
       if (result === undefined) {
+        console.log('--- not result ')
         return new CancelDoctypeDialog();
       }
       return new SubmitDoctypeDialog(result);
@@ -71,7 +72,8 @@ export class DoctypeEffects {
     mergeMap(
       (data) => this.doctypeService.updateDoctype(data.payload)
         .pipe(
-          map(() => new SubmitDoctypeDialogSuccess(data.payload)),
+          // map(() => new SubmitDoctypeDialogSuccess(data.payload)),
+          map(() => new GetDoctypes()),
           catchError(error => of(new SubmitDoctypeDialogFailure(error)))
         )
     )

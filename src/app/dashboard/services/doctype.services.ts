@@ -23,7 +23,7 @@ export class DoctypeServices {
   }
 
   updateDoctype(doctype: DoctypeInterface): Observable<DoctypeInterface> {
-    console.log('--- save doctype in service:', doctype);
+    console.log('--- update doctype in service:', doctype);
     const url = environment.doctypesUrl;
     const resp: Observable<DoctypeInterface> = this.http.put<DoctypeInterface>(url, doctype);
     return resp;
