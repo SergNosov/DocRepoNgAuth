@@ -11,25 +11,27 @@ import {DoctypeServices} from './services/doctype.services';
 import {doctypeReducers} from './store/redusers/doctype.redusers';
 import {EffectsModule} from '@ngrx/effects';
 import {DoctypeEffects} from './store/effects/doctype.effects';
-import {DoctypeComponent} from './components/doctype/doctype.component';
 import {DoctypeDialogComponent} from './components/doctypeDialog/doctypeDialog.component';
-import {MatButtonModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatDialogModule, MatIconModule, MatInputModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const routes = [
   {path: 'documents', component: DocumentsComponent},
   {path: 'doctypes', component: DoctypesComponent},
-  {path: 'doctype/:id', component: DoctypeComponent},
   {path: 'senders', component: SendersComponent}
 ];
 
-const MATERIAL_COMPONENTS = [MatDialogModule, MatButtonModule, MatInputModule];
+const MATERIAL_COMPONENTS = [
+  MatDialogModule,
+  MatButtonModule,
+  MatInputModule,
+  MatIconModule
+];
 
 @NgModule({
   declarations: [
     DocumentsComponent,
     DoctypesComponent,
-    DoctypeComponent,
     DoctypeDialogComponent,
     SendersComponent
   ],

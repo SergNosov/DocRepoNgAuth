@@ -7,24 +7,25 @@
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Тип</th>
-          <th scope="col">Действие</th>
+          <th scope="col" class="dr-action">Действие</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let doctype of (doctypes$ | async)">
-        <!--    (click)="navigateToDoctype(doctype.id)" -->
+          <!--    (click)="navigateToDoctype(doctype.id)" -->
 
           <td>{{ doctype.id }}</td>
           <td>{{ doctype.title }}</td>
           <td>
-            <button type="button" class="btn btn-primary btn-sm"
-                    (click)="navigateToDoctype(doctype.id)">
-              Редактировать
+            <button mat-icon-button class="edit"
+                    (click)="openDialog(doctype)">
+              <mat-icon> edit </mat-icon>
             </button>
-            <button type="button" class="btn btn-danger btn-sm">
-              Удалить
-            </button>
-            <button mat-raised-button (click)="openDialog(doctype)">Show dialog Doctype</button>
+
+              <button mat-icon-button color="warn">
+                <mat-icon> delete </mat-icon>
+              </button>
+
           </td>
         </tr>
         </tbody>
