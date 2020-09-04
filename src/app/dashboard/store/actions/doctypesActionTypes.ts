@@ -12,8 +12,8 @@ export enum DoctypesActionTypes {
   OpenDialog = '[Doctype Dialog] Open dialog',
   CancelDialog = '[Doctype Dialog] Cancel dialog',
   SubmitDialog = '[Doctype Dialog] Submit dialog',
-  SubmitDialogSuccess = '[Doctype Dialog] Result dialog success',
-  SubmitDialogFailure = '[Doctype Dialog] Result dialog failure'
+  SubmitDialogSuccess = '[Doctype Dialog] Submit dialog success',
+  SubmitDialogFailure = '[Doctype Dialog] Submit dialog failure'
 }
 
 export class GetDoctypes implements Action {

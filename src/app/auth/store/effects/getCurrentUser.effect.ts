@@ -6,6 +6,8 @@ import {CurrentUserInterface} from '../../../shared/types/currentUser.interface'
 import {of} from 'rxjs';
 import {PersistenceService} from '../../../shared/services/persistence.service';
 import {getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction} from '../actions/getCurrentUser.action';
+import {Router} from '@angular/router';
+import {registerSuccessAction} from '../actions/register.action';
 
 @Injectable()
 export class GetCurrentUserEffect {
@@ -28,8 +30,19 @@ export class GetCurrentUserEffect {
       })
     ));
 
+  redirectAfterCurrentUserFailure$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(getCurrentUserFailureAction),
+      tap(() => {
+        this.router.navigateByUrl('/login');
+      })
+    ),
+    {dispatch: false}
+  );
+
   constructor(private actions$: Actions,
               private authService: AuthService,
-              private persistenceService: PersistenceService) {
+              private persistenceService: PersistenceService,
+              private router: Router) {
   }
 }

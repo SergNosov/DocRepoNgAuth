@@ -13,7 +13,6 @@ import {PersistenceService} from '../shared/services/persistence.service';
 import {GetCurrentUserEffect} from './store/effects/getCurrentUser.effect';
 
 const routes = [
- // {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: RegisterComponent}
 ];
 
